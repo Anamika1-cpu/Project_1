@@ -163,7 +163,7 @@ This allows accurate measurement of:
                   |
  gold_dim_users — gold_fact_product_performance — gold_dim_reviews
 ```
-
+<img width="1326" height="796" alt="Screenshot 2026-02-05 at 12 23 16 PM" src="https://github.com/user-attachments/assets/7e344c99-7013-4824-a44c-b70791b3e9bf" />
 This schema ensures:
 
 * Simple relationships
@@ -273,6 +273,8 @@ These KPIs allow stakeholders to quickly assess the scale, reach, and pricing po
 The dashboard emphasizes **pricing strength, customer engagement, and discount behavior** rather than volatile average ratings. This approach ensures the insights remain reliable despite review-level data granularity.
 
 ---
+<img width="1549" height="881" alt="Screenshot 2026-02-05 at 9 34 59 AM" src="https://github.com/user-attachments/assets/964c7aa4-bc6f-4a1c-bb53-e33338500c4d" />
+<img width="1557" height="875" alt="Screenshot 2026-02-05 at 9 34 43 AM" src="https://github.com/user-attachments/assets/4d42521b-ab72-42b7-92aa-91c1722eaf67" />
 
 ### Dashboard Page 1: Executive Overview
 
