@@ -174,21 +174,22 @@ This schema ensures:
 
 ## 7. Semantic Model & Measures
 
-A semantic layer was created in Power BI to ensure consistent metric definitions.
+### Semantic Model Overview
 
-### Core Measures
+The Gold layer tables were exposed to Power BI and organized into a star schema–based semantic model. Relationships were defined between the fact and dimension tables to enable category-wise and product-wise analysis.
 
-* Average Product Rating
-* Total Products
-* Average Discount Percentage
-* Average Discount Amount
-* Total Rating Count
+Given the review-level granularity of the data and challenges with rating aggregation, the semantic model prioritizes **stable, engagement- and pricing-based KPIs** over raw average ratings.
 
-### Aggregation Strategy
+### Final KPIs Used
 
-To avoid over-counting (due to review-level grain), **product-level aggregation** was applied using iterator-based DAX logic.
+The following KPIs were finalized for the dashboard:
 
-This ensures that KPIs reflect true business meaning rather than raw row-level calculations.
+* **Total Users** – distinct count of users who have provided reviews
+* **Total Products** – distinct count of products available in the dataset
+* **Average Discount Percentage** – average of discount percentages across products
+* **Total Rating Count** – total volume of customer ratings (used as a proxy for engagement)
+
+These KPIs are robust, easy to interpret, and well-aligned with business decision-making.
 
 ---
 
@@ -199,6 +200,77 @@ This ensures that KPIs reflect true business meaning rather than raw row-level c
 * Product Managers
 * Category Managers
 * Business Leadership
+
+The dashboard is designed to answer the following high-level questions:
+
+* Which categories contribute the most in terms of pricing and engagement?
+* Where is customer engagement concentrated?
+* How do discounts vary across products and categories?
+
+---
+
+### Dashboard KPIs (Top Section)
+
+The top section of the dashboard provides a quick summary of platform-wide metrics:
+
+* **Total Users** – number of unique reviewers
+* **Total Products** – size of the product catalog
+* **Average Discount %** – overall discounting strategy intensity
+
+These KPIs allow stakeholders to quickly assess the scale, reach, and pricing posture of the platform.
+
+---
+
+### Pricing Analysis
+
+**Visual:** Sum of Actual Price by Category (Bar Chart)
+
+**Insight:**
+
+* Highlights categories contributing the highest overall product value
+* Helps identify premium-heavy versus low-value categories
+
+---
+
+### Customer Engagement Analysis
+
+**Visual:** Sum of Rating Count by Category (Bar Chart)
+
+**Insight:**
+
+* Measures customer engagement through review volume
+* Identifies categories with high customer interaction and visibility
+
+---
+
+### Discount Analysis
+
+**Visuals:**
+
+* Sum of Discounted Price by Category
+* Sum of Actual Price by Discount Percentage
+
+**Insights:**
+
+* Shows how discounted pricing is distributed across categories
+* Helps understand whether high discounts are applied to high-value or low-value products
+
+---
+
+### Product Feature & Rating Distribution
+
+**Visual:** Average Rating by Category / Product Attributes (Bar Chart)
+
+**Insight:**
+
+* Provides a relative comparison of customer perception across product attributes and categories
+* Used as a supporting analytical view rather than a primary KPI
+
+---
+
+### Dashboard Summary
+
+The dashboard emphasizes **pricing strength, customer engagement, and discount behavior** rather than volatile average ratings. This approach ensures the insights remain reliable despite review-level data granularity.
 
 ---
 
@@ -253,59 +325,5 @@ This ensures that KPIs reflect true business meaning rather than raw row-level c
 **Insights:**
 
 * Enable detailed drill-down for operational decisions
-
----
-
-## 9. Visualization Best Practices Applied
-
-* KPI cards for executive scanning
-* Bar charts for category comparison
-* Scatter plots for correlation analysis
-* Tables for operational detail
-* Slicers for interactivity
-
-The dashboard layout follows a **top-down storytelling approach**, moving from summary to detail.
-
----
-
-## 10. Security Implementation
-
-### Row-Level Security (RLS)
-
-Example roles:
-
-* Category Manager – restricted to assigned category
-* Leadership – full access
-
-RLS ensures that users only see data relevant to their responsibility.
-
----
-
-## 11. Data Refresh Strategy
-
-### Refresh Cadence
-
-| Layer            | Frequency |
-| ---------------- | --------- |
-| Bronze → Silver  | Daily     |
-| Silver → Gold    | Daily     |
-| Power BI Dataset | Daily     |
-
-This cadence balances data freshness with system efficiency and aligns with standard enterprise BI practices.
-
----
-
-## 12. Key Learnings
-
-* Single flat files can be transformed into scalable analytical models
-* Correct grain definition is critical for meaningful KPIs
-* Gold-layer design directly impacts dashboard quality
-* Business-aligned visual design is as important as technical correctness
-
----
-
-## 13. Conclusion
-
-This project demonstrates a complete analytics lifecycle—from raw data ingestion to secure, insight-driven dashboards. The solution reflects real-world enterprise data engineering and BI practices, emphasizing clarity, scalability, and business relevance.
 
 The architecture, transformations, and dashboards together form a robust foundation for data-driven decision-making.
